@@ -17,13 +17,17 @@ jobs:
       - name: Print github actor
         run: |
           set -x
-          echo ${{ github.actor }}
+          echo $PR_USER
+        env:
+          PR_USER: "${{ github.actor }}"
       
       - name: Check if the PR requester is a collaborator
         run: |
           curl \
             -H "Accept: application/vnd.github.v3+json" \
             -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/rafaelfolco/github-ci/collaborators/${{ github.actor }} \
+            https://api.github.com/repos/rafaelfolco/github-ci/collaborators/$PR_USER \
             --fail
+        env:
+          PR_USER: "${{ github.actor }}"
           
