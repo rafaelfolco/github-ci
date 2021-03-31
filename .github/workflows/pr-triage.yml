@@ -6,7 +6,7 @@ on:
 
 jobs:
   triage:
-    runs-on: "${{ secrets.SELF_HOSTED_RUNNER }}"
+    runs-on: self-hosted
 
     steps:
       - name: Print pull request number
