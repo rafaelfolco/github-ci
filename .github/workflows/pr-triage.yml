@@ -6,23 +6,20 @@ on:
 
 jobs:
   triage:
-  env:
-    PR_NUMBER: ${{ github.event.number }}
-    PR_USER: ${{ github.event.pull_request.sender }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Print pull request number
-        run: echo $PR_NUMBER
+        run: echo ${{ github.event.number }}
         
       - name: Print pull request sender
-        run: echo $PR_USER
+        run: echo ${{ github.event.pull_request.sender }}
       
       - name: Check if the PR requester is a collaborator
         run: |
           curl \
             -H "Accept: application/vnd.github.v3+json" \
             -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/rafaelfolco/github-ci/collaborators/$PR_USER \
+            https://api.github.com/repos/rafaelfolco/github-ci/collaborators/${{ github.event.pull_request.sender }} \
             --fail
           
