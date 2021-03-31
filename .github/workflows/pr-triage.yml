@@ -10,16 +10,20 @@ jobs:
 
     steps:
       - name: Print pull request number
-        run: echo ${{ github.event.number }}
+        run: |
+          set -x
+          echo ${{ github.event.number }}
         
-      - name: Print pull request sender
-        run: echo ${{ github.event.pull_request.sender }}
+      - name: Print github actor
+        run: |
+          set -x
+          echo ${{ github.actor }}
       
       - name: Check if the PR requester is a collaborator
         run: |
           curl \
             -H "Accept: application/vnd.github.v3+json" \
             -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/rafaelfolco/github-ci/collaborators/${{ github.event.pull_request.sender }} \
+            https://api.github.com/repos/rafaelfolco/github-ci/collaborators/${{ github.actor }} \
             --fail
           
