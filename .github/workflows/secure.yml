@@ -1,0 +1,19 @@
+
+
+name: Secure
+
+on:
+  workflow_run:
+    workflows: ["Pull Request Triage"]
+    types:
+      - completed
+      
+    workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Run a secure test
+        run: echo "SECURE TEST"
