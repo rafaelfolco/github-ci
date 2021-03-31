@@ -7,6 +7,8 @@ on:
 jobs:
   triage:
     runs-on: self-hosted
+    environment:
+        name: test
 
     steps:
       - name: Print pull request number
