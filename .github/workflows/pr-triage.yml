@@ -6,7 +6,7 @@ on:
 
 jobs:
   triage:
-    runs-on: ubuntu-latest
+    runs-on: "${{ secrets.SELF_HOSTED_RUNNER }}"
 
     steps:
       - name: Print pull request number
