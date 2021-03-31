@@ -6,7 +6,7 @@ on:
 
 jobs:
   triage:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     environment:
         name: test
 
