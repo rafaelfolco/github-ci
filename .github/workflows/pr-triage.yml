@@ -7,8 +7,6 @@ on:
 jobs:
   triage:
     runs-on: ubuntu-latest
-    environment:
-        name: test
 
     steps:
       - name: Print pull request number
