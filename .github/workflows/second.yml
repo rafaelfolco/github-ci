@@ -1,6 +1,6 @@
 
 
-name: Secure
+name: Second Phase Workflow
 
 on:
   workflow_run:
@@ -12,8 +12,8 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Run a secure test
-        run: echo "SECURE TEST"
+      - name: Run a second test
+        run: echo "SECOND TEST"
